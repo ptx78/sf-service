@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- À changer aussi pour chaque nouvel artisan : ces 5 lignes servent à Google et à l'aperçu du lien (WhatsApp, SMS) -->
+<title>SF Service | Élagueur, arboriste et paysagiste à Maurepas</title>
+<meta name="description" content="Élagueur, arboriste et paysagiste à Maurepas (Yvelines). Élagage, abattage, clôtures, haies. Devis gratuit sur place, sans engagement.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="SF Service | Élagueur, arboriste et paysagiste à Maurepas">
+<meta property="og:description" content="Élagueur, arboriste et paysagiste à Maurepas (Yvelines). Élagage, abattage, clôtures, haies. Devis gratuit sur place, sans engagement.">
+<meta name="theme-color" content="#16261C">
+<!-- Maquette : à retirer à la mise en ligne définitive, sinon Google ne référence pas le site -->
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Public+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+<script>
+/* =====================================================================
+   TOUT CE QUI CHANGE D'UN ARTISAN À L'AUTRE EST ICI.
+   Pour un nouveau prospect : duplique le fichier, modifie ce bloc, c'est tout.
+   ===================================================================== */
+const SITE = {
+  nom: "SF Service",
+  metier: "Élagueur, arboriste et paysagiste",
+  ville: "Maurepas",
+  departement: "Yvelines",
+  telAffiche: "06 29 54 23 86",
+  telLien: "+33629542386",
+  email: "",                       // vide = le formulaire affiche un message de démo
+  titre: "Élagage, abattage et clôtures à Maurepas",
+  intro: "Vos arbres taillés proprement, vos clôtures posées droit, votre terrain laissé net. Devis gratuit, sur place, sans engagement.",
+  noteGoogle: "5/5",               // à vérifier sur la fiche Google le jour de l'envoi
+  nbAvis: "21",
+  prestations: [                   // à valider avec l'artisan
+    { titre: "Élagage et taille", texte: "Arbres fruitiers, marronniers, grands sujets. Taille raisonnée qui respecte l'arbre." },
+    { titre: "Abattage et dessouchage", texte: "Arbres dangereux, malades ou gênants, y compris près des maisons et des lignes." },
+    { titre: "Pose de clôtures", texte: "Clôtures mitoyennes, grillage rigide, panneaux. Alignement et finitions soignés." },
+    { titre: "Taille de haies", texte: "Remise en forme ou entretien régulier, avec évacuation des déchets verts." },
+    { titre: "Entretien de jardin", texte: "Débroussaillage, tonte, nettoyage de terrain avant ou après travaux." }
+  ],
+  zones: ["Maurepas", "Élancourt", "Coignières", "La Verrière", "Jouars-Pontchartrain", "Plaisir", "Trappes", "Le Mesnil-Saint-Denis"],
+  photos: [],                      // ex. ["photos/chantier1.jpg", "photos/chantier2.jpg", "photos/chantier3.jpg"]
+  avis: [                          // à recopier depuis la fiche Google, avec l'accord de l'artisan
+    { texte: "Avis client à recopier depuis la fiche Google.", auteur: "Prénom, ville" },
+    { texte: "Avis client à recopier depuis la fiche Google.", auteur: "Prénom, ville" },
+    { texte: "Avis client à recopier depuis la fiche Google.", auteur: "Prénom, ville" }
+  ],
+  siret: "",                       // vide = la ligne SIRET est masquée
+  demo: true,                      // true = mention « maquette » en pied de page ; false à la mise en ligne
+  couleurs: { encre: "#16261C", fond: "#E9EEE6", accent: "#F26B1D", ecorce: "#5B4636" }
+};
+</script>
+
+<style>
+  :root {
+    --encre: #16261C;
+    --fond: #E9EEE6;
+    --accent: #F26B1D;
+    --ecorce: #5B4636;
+    --blanc: #FFFFFF;
+    --titre: "Bricolage Grotesque", "Trebuchet MS", Arial, sans-serif;
+    --texte: "Public Sans", "Segoe UI", Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0;
+    background: var(--fond);
+    color: var(--encre);
+    font-family: var(--texte);
+    font-size: 1.0625rem;
+    line-height: 1.55;
+    padding-bottom: 4.5rem; /* place pour la barre d'appel mobile */
+  }
+  a { color: inherit; }
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+  }
+  .page { max-width: 68rem; margin: 0 auto; padding: 0 1.25rem; }
+  h1, h2, h3 { font-family: var(--titre); line-height: 1.08; margin: 0; }
+  h1 { font-size: clamp(2.4rem, 7vw, 4.5rem); font-weight: 800; letter-spacing: -0.02em; }
+  h2 { font-size: clamp(1.7rem, 4vw, 2.5rem); font-weight: 800; letter-spacing: -0.01em; margin-bottom: 1.5rem; }
+  h3 { font-size: 1.25rem; font-weight: 600; }
+  p { margin: 0; max-width: 38rem; }
+
+  /* En-tête */
+  .entete { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1.1rem 0; }
+  .entete-nom { font-family: var(--titre); font-weight: 800; font-size: 1.3rem; text-decoration: none; }
+  .entete-metier { display: block; font-family: var(--texte); font-weight: 400; font-size: 0.875rem; color: var(--ecorce); }
+  .entete-tel { font-family: var(--titre); font-weight: 600; font-size: 1.15rem; white-space: nowrap; }
+
+  /* Boutons */
+  .bouton {
+    display: inline-block;
+    font-family: var(--titre);
+    font-weight: 600;
+    font-size: 1.15rem;
+    text-decoration: none;
+    padding: 0.9rem 1.4rem;
+    border-radius: 0.5rem;
+    border: 2px solid var(--encre);
+    cursor: pointer;
+  }
+  .bouton-appel { background: var(--accent); color: var(--encre); }
+  .bouton-devis { background: transparent; color: var(--encre); }
+  .bouton:hover { filter: brightness(0.95); }
+
+  /* Ouverture */
+  .ouverture { display: grid; grid-template-columns: 1.3fr 1fr; gap: 2rem; align-items: center; padding: 3rem 0 4rem; }
+  .ouverture p { font-size: 1.2rem; margin: 1.5rem 0 2rem; }
+  .ouverture-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .ouverture-note { margin-top: 1.5rem; font-size: 0.95rem; color: var(--ecorce); }
+  .cernes { width: 100%; height: auto; display: block; }
+
+  /* Sections */
+  .section { padding: 3.5rem 0; border-top: 2px solid var(--encre); }
+
+  .prestations { list-style: none; margin: 0; padding: 0; }
+  .prestations li { display: grid; grid-template-columns: 18rem 1fr; gap: 1.5rem; padding: 1.1rem 0; border-bottom: 1px solid rgba(22, 38, 28, 0.2); }
+  .prestations li:last-child { border-bottom: 0; }
+
+  .photos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  .photos img, .photo-vide { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 0.5rem; }
+  .photo-vide { display: flex; align-items: center; justify-content: center; text-align: center; padding: 1rem; border: 2px dashed var(--ecorce); color: var(--ecorce); font-size: 0.95rem; }
+
+  .avis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .avis blockquote { margin: 0; padding-left: 1rem; border-left: 4px solid var(--accent); }
+  .avis cite { display: block; margin-top: 0.6rem; font-style: normal; font-size: 0.95rem; color: var(--ecorce); }
+
+  .zones { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem 1.75rem; font-family: var(--titre); font-weight: 600; font-size: 1.25rem; }
+
+  /* Devis */
+  .devis { background: var(--encre); color: var(--fond); border-radius: 0.75rem; padding: 2.5rem 1.5rem; margin: 3.5rem 0; }
+  .devis-grille { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; max-width: 60rem; margin: 0 auto; }
+  .devis .entete-tel { font-size: clamp(1.8rem, 5vw, 2.6rem); font-weight: 800; color: var(--accent); text-decoration: none; display: inline-block; margin-top: 1rem; }
+  .devis label { display: block; font-weight: 600; font-size: 0.95rem; margin: 0 0 0.3rem; }
+  .devis input, .devis textarea { width: 100%; font: inherit; padding: 0.7rem 0.8rem; border-radius: 0.4rem; border: 2px solid transparent; background: var(--blanc); color: var(--encre); margin-bottom: 1rem; }
+  .devis textarea { min-height: 6.5rem; resize: vertical; }
+  .devis .bouton { border-color: var(--accent); width: 100%; }
+  .devis-retour { margin-top: 1rem; font-weight: 600; }
+  .devis-rgpd { margin-top: 0.75rem; font-size: 0.85rem; opacity: 0.8; }
+  h1, h2 { text-wrap: balance; }
+
+  .pied { padding: 2rem 0 1rem; font-size: 0.9rem; color: var(--ecorce); }
+
+  /* Barre d'appel mobile */
+  .barre-appel { position: fixed; left: 0; right: 0; bottom: 0; display: none; padding: 0.6rem 1rem calc(0.6rem + env(safe-area-inset-bottom, 0px)); background: var(--encre); }
+  .barre-appel .bouton { display: block; text-align: center; border-color: var(--accent); }
+
+  @media (max-width: 760px) {
+    .ouverture { grid-template-columns: 1fr; padding-top: 1.5rem; }
+    .cernes { max-width: 9rem; margin: 0 auto; }
+    .entete-tel { display: none; }
+    .prestations li { grid-template-columns: 1fr; gap: 0.3rem; }
+    .photos, .avis, .devis-grille { grid-template-columns: 1fr; }
+    .barre-appel { display: block; }
+  }
+  @media (min-width: 761px) { body { padding-bottom: 0; } }
+</style>
+</head>
+
+<body>
+<div class="page">
+
+  <header class="entete">
+    <a class="entete-nom" href="#haut"><span data-champ="nom"></span><span class="entete-metier" data-champ="metier"></span></a>
+    <a class="entete-tel" data-tel data-champ="telAffiche"></a>
+  </header>
+
+  <main id="haut">
+    <section class="ouverture">
+      <div>
+        <h1 data-champ="titre"></h1>
+        <p data-champ="intro"></p>
+        <div class="ouverture-actions">
+          <a class="bouton bouton-appel" data-tel>Appeler le <span data-champ="telAffiche"></span></a>
+          <a class="bouton bouton-devis" href="#devis">Demander un devis gratuit</a>
+        </div>
+        <p class="ouverture-note" id="note"></p>
+      </div>
+      <svg class="cernes" id="cernes" viewBox="0 0 400 400" role="img" aria-label="Coupe de tronc d'arbre"></svg>
+    </section>
+
+    <section class="section" aria-labelledby="t-prestations">
+      <h2 id="t-prestations">Ce que nous faisons</h2>
+      <ul class="prestations" id="prestations"></ul>
+    </section>
+
+    <section class="section" id="s-photos" aria-labelledby="t-photos">
+      <h2 id="t-photos">Chantiers récents</h2>
+      <div class="photos" id="photos"></div>
+    </section>
+
+    <section class="section" id="s-avis" aria-labelledby="t-avis">
+      <h2 id="t-avis">Ce que disent nos clients</h2>
+      <div class="avis" id="avis"></div>
+    </section>
+
+    <section class="section" aria-labelledby="t-zones">
+      <h2 id="t-zones">Nous intervenons à</h2>
+      <ul class="zones" id="zones"></ul>
+    </section>
+
+    <section class="devis" id="devis" aria-labelledby="t-devis">
+      <div class="devis-grille">
+        <div>
+          <h2 id="t-devis">Un devis gratuit sous 48&nbsp;h</h2>
+          <p>Décrivez votre besoin, nous vous rappelons pour fixer un passage. Pour une urgence, appelez directement.</p>
+          <a class="entete-tel" data-tel data-champ="telAffiche"></a>
+        </div>
+        <form id="formulaire">
+          <label for="f-nom">Votre nom</label>
+          <input id="f-nom" name="nom" autocomplete="name" required>
+          <label for="f-tel">Votre téléphone</label>
+          <input id="f-tel" name="tel" type="tel" inputmode="tel" autocomplete="tel" required pattern="(\+33 ?|0)[1-9]([ .]?[0-9]{2}){4}" title="Un numéro à 10 chiffres, par exemple 06 12 34 56 78">
+          <label for="f-ville">Votre commune</label>
+          <input id="f-ville" name="ville" autocomplete="address-level2">
+          <label for="f-besoin">Votre besoin</label>
+          <textarea id="f-besoin" name="besoin" required></textarea>
+          <button class="bouton bouton-appel" type="submit">Envoyer ma demande</button>
+          <p class="devis-retour" id="retour" role="status"></p>
+          <p class="devis-rgpd">Vos coordonnées servent uniquement à vous rappeler pour ce devis.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pied">
+    <p><span data-champ="nom"></span>, <span data-champ="ville"></span> (<span data-champ="departement"></span>).<span id="siret"></span></p>
+    <p id="mention-demo" hidden>Maquette de démonstration. Les mentions légales, vos photos et vos avis clients sont ajoutés à la mise en ligne.</p>
+  </footer>
+</div>
+
+<div class="barre-appel">
+  <a class="bouton bouton-appel" data-tel>Appeler le <span data-champ="telAffiche"></span></a>
+</div>
+
+<script>
+(function () {
+  var racine = document.documentElement.style;
+  racine.setProperty("--encre", SITE.couleurs.encre);
+  racine.setProperty("--fond", SITE.couleurs.fond);
+  racine.setProperty("--accent", SITE.couleurs.accent);
+  racine.setProperty("--ecorce", SITE.couleurs.ecorce);
+
+  document.title = SITE.nom + " | " + SITE.metier + " à " + SITE.ville;
+  document.querySelector('meta[name="description"]').setAttribute("content", SITE.metier + " à " + SITE.ville + ". " + SITE.intro);
+
+  document.querySelectorAll("[data-champ]").forEach(function (el) { el.textContent = SITE[el.dataset.champ]; });
+  document.querySelectorAll("[data-tel]").forEach(function (el) { el.setAttribute("href", "tel:" + SITE.telLien); });
+
+  if (SITE.noteGoogle && SITE.nbAvis) {
+    document.getElementById("note").textContent = "Noté " + SITE.noteGoogle + " sur Google par " + SITE.nbAvis + " clients.";
+  }
+
+  function creer(balise, texte, classe) {
+    var el = document.createElement(balise);
+    if (texte) el.textContent = texte;
+    if (classe) el.className = classe;
+    return el;
+  }
+
+  var listePrestations = document.getElementById("prestations");
+  SITE.prestations.forEach(function (p) {
+    var li = creer("li");
+    li.appendChild(creer("h3", p.titre));
+    li.appendChild(creer("p", p.texte));
+    listePrestations.appendChild(li);
+  });
+
+  var blocPhotos = document.getElementById("photos");
+  if (SITE.photos.length) {
+    SITE.photos.forEach(function (chemin, i) {
+      var img = creer("img");
+      img.src = chemin;
+      img.alt = "Chantier " + (i + 1) + " réalisé par " + SITE.nom;
+      img.loading = "lazy";
+      blocPhotos.appendChild(img);
+    });
+  } else {
+    document.getElementById("s-photos").hidden = true;   /* pas de photo = pas de section */
+  }
+
+  var blocAvis = document.getElementById("avis");
+  var vraisAvis = SITE.avis.filter(function (a) { return a.texte && a.texte.indexOf("à recopier") === -1; });
+  if (!vraisAvis.length) document.getElementById("s-avis").hidden = true;   /* pas d'avis réel = pas de section */
+  vraisAvis.forEach(function (a) {
+    var bq = creer("blockquote");
+    bq.appendChild(creer("p", a.texte));
+    bq.appendChild(creer("cite", a.auteur));
+    blocAvis.appendChild(bq);
+  });
+
+  if (SITE.siret) document.getElementById("siret").textContent = " SIRET : " + SITE.siret + ".";
+  document.getElementById("mention-demo").hidden = !SITE.demo;
+
+  var listeZones = document.getElementById("zones");
+  SITE.zones.forEach(function (z) { listeZones.appendChild(creer("li", z)); });
+
+  /* Coupe de tronc : cernes de croissance légèrement irréguliers */
+  var svg = document.getElementById("cernes");
+  var ns = "http://www.w3.org/2000/svg";
+  for (var n = 0; n < 15; n++) {
+    var e = document.createElementNS(ns, "ellipse");
+    var r = 14 + n * 12.5;
+    e.setAttribute("cx", 200 + Math.sin(n * 1.7) * 4);
+    e.setAttribute("cy", 200 + Math.cos(n * 2.3) * 4);
+    e.setAttribute("rx", r + Math.sin(n * 0.9) * 3);
+    e.setAttribute("ry", r + Math.cos(n * 1.3) * 3);
+    e.setAttribute("fill", "none");
+    e.setAttribute("stroke", n === 14 ? SITE.couleurs.ecorce : SITE.couleurs.encre);
+    e.setAttribute("stroke-width", n === 14 ? 9 : 1.2 + (n % 3) * 0.9);
+    e.setAttribute("opacity", n === 14 ? 1 : 0.75);
+    svg.appendChild(e);
+  }
+  var coeur = document.createElementNS(ns, "circle");
+  coeur.setAttribute("cx", 200); coeur.setAttribute("cy", 200); coeur.setAttribute("r", 5);
+  coeur.setAttribute("fill", SITE.couleurs.accent);
+  svg.appendChild(coeur);
+
+  /* Formulaire : ouvre un mail si une adresse est renseignée, sinon message de démo.
+     Pour la version finale, brancher Netlify Forms ou Formspree. */
+  document.getElementById("formulaire").addEventListener("submit", function (ev) {
+    ev.preventDefault();
+    var f = ev.target;
+    var retour = document.getElementById("retour");
+    var nomSaisi = f.nom.value;
+    if (SITE.email) {
+      var corps = "Nom : " + f.nom.value + "\nTéléphone : " + f.tel.value + "\nCommune : " + f.ville.value + "\n\n" + f.besoin.value;
+      window.location.href = "mailto:" + SITE.email + "?subject=" + encodeURIComponent("Demande de devis") + "&body=" + encodeURIComponent(corps);
+      retour.textContent = "Votre messagerie s'ouvre avec la demande prête à envoyer.";
+    } else {
+      retour.textContent = "Demande bien reçue, " + nomSaisi + ". Sur le site en ligne, elle arrive directement dans votre boîte mail.";
+      f.reset();
+    }
+  });
+})();
+</script>
+</body>
+</html>
